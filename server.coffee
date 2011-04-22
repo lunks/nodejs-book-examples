@@ -1,7 +1,12 @@
 http = require "http"
-start = ->
+url = require "url"
+start = (route) ->
   onRequest = (request, response) ->
-    console.log "Request received."
+    pathname = url.parse(request.url).pathname
+    console.log "Request for "+ pathname + "received."
+
+    route(pathname)
+
     response.writeHead 200, {"Content-Type": "text/html"}
     response.write "Hello World!"
     response.end()
