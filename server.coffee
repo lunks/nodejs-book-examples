@@ -1,7 +1,7 @@
 http = require "http"
-start ->
-  onRequest (request, response) ->
-    console.log "Request received.")
+start = ->
+  onRequest = (request, response) ->
+    console.log "Request received."
     response.writeHead 200, {"Content-Type": "text/html"}
     response.write "Hello World!"
     response.end()
